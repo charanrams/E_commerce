@@ -2,37 +2,6 @@
 export const db = {
   products: [
     {
-      id: "p1",
-      name: "SoundPulse Wireless Pro",
-      slug: "nexora-soundpulse-wireless-pro",
-      tagline: "Ultra-low latency ANC Headphones with Hifi Audio",
-      price: 199.99,
-      originalPrice: 249.99,
-      category: "Tech",
-      rating: 4.9,
-      reviewCount: 128,
-      images: [
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=800&q=80"
-      ],
-      colors: [
-        { name: "Obsidian Black", hex: "#121212" },
-        { name: "Cyber Silver", hex: "#E0E0E0" },
-        { name: "Electric Indigo", hex: "#6C5CE7" }
-      ],
-      sizes: ["Standard"],
-      description: "Experience spatial studio audio with true hybrid Active Noise Cancellation (ANC), 40-hour battery life, and ultra-plush memory foam cushions.",
-      features: [
-        "Hybrid ANC up to -42dB",
-        "40-hour battery runtime with ultra-fast charging",
-        "Custom 40mm Titanium Drivers",
-        "Bluetooth 5.3 + Multipoint Connectivity"
-      ],
-      stock: 35,
-      isNew: true,
-      isFeatured: true
-    },
-    {
       id: "p2",
       name: "Horizon Smartwatch Ultra",
       slug: "nexora-horizon-smartwatch-ultra",
@@ -493,9 +462,9 @@ export const db = {
 
   cart: [
     {
-      productId: "p1",
-      selectedColor: "Electric Indigo",
-      selectedSize: "Standard",
+      productId: "p2",
+      selectedColor: "Titanium Gray",
+      selectedSize: "42mm",
       quantity: 1
     }
   ],
@@ -562,15 +531,15 @@ export const db = {
       createdAt: "2026-07-20T14:30:00Z",
       items: [
         {
-          productId: "p1",
-          name: "SoundPulse Wireless Pro",
-          price: 199.99,
+          productId: "p2",
+          name: "Horizon Smartwatch Ultra",
+          price: 299.99,
           quantity: 1,
-          selectedColor: "Electric Indigo",
-          selectedSize: "Standard"
+          selectedColor: "Titanium Gray",
+          selectedSize: "42mm"
         }
       ],
-      totalAmount: 199.99,
+      totalAmount: 299.99,
       discount: 0,
       shippingAddress: {
         fullName: "Alex Mercer",

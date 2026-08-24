@@ -104,8 +104,8 @@ export const HomePage = () => {
       role: "Verified Buyer",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
-      quote: "The SoundPulse Wireless Pro has unmatched ANC quality. Sub-second pairing with my devices and battery lasts all week!",
-      productName: "SoundPulse Wireless Pro"
+      quote: "The Horizon Smartwatch Ultra has unmatched telemetry quality. Sub-second pairing with my devices and battery lasts all week!",
+      productName: "Horizon Smartwatch Ultra"
     },
     {
       id: 2,

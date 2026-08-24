@@ -27,40 +27,12 @@ export const seedDatabase = async () => {
       ]);
     }
 
+    await Product.deleteMany({ $or: [{ name: "SoundPulse Wireless Pro" }, { slug: "nexora-soundpulse-wireless-pro" }] });
+
     const productCount = await Product.countDocuments();
     if (productCount === 0) {
       console.log('🌱 [MongoDB Seed] Initializing default products catalog...');
       await Product.create([
-        {
-          name: "SoundPulse Wireless Pro",
-          slug: "nexora-soundpulse-wireless-pro",
-          tagline: "Ultra-low latency ANC Headphones with Hifi Audio",
-          price: 199.99,
-          originalPrice: 249.99,
-          category: "Tech",
-          rating: 4.9,
-          reviewCount: 128,
-          images: [
-            "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=800&q=80"
-          ],
-          colors: [
-            { name: "Obsidian Black", hex: "#121212" },
-            { name: "Cyber Silver", hex: "#E0E0E0" },
-            { name: "Electric Indigo", hex: "#6C5CE7" }
-          ],
-          sizes: ["Standard"],
-          description: "Experience spatial studio audio with true hybrid Active Noise Cancellation (ANC), 40-hour battery life, and ultra-plush memory foam cushions.",
-          features: [
-            "Hybrid ANC up to -42dB",
-            "40-hour battery runtime with ultra-fast charging",
-            "Custom 40mm Titanium Drivers",
-            "Bluetooth 5.3 + Multipoint Connectivity"
-          ],
-          stock: 35,
-          isNewProduct: true,
-          isFeatured: true
-        },
         {
           name: "Horizon Smartwatch Ultra",
           slug: "nexora-horizon-smartwatch-ultra",

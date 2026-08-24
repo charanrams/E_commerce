@@ -6,38 +6,6 @@ const AppContext = createContext();
 
 const initialProducts = [
   {
-    id: "p1",
-    name: "SoundPulse Wireless Pro",
-    slug: "nexora-soundpulse-wireless-pro",
-    tagline: "Ultra-low latency ANC Headphones with Hifi Audio",
-    price: 199.99,
-    originalPrice: 249.99,
-    category: "Tech",
-    subCategory: "Headphones & ANC",
-    rating: 4.9,
-    reviewCount: 128,
-    images: [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=800&q=80"
-    ],
-    colors: [
-      { name: "Crimson Red", hex: "#BA0C2F" },
-      { name: "Obsidian Black", hex: "#121212" },
-      { name: "Cyber Silver", hex: "#E0E0E0" }
-    ],
-    sizes: ["Standard"],
-    description: "Experience spatial studio audio with true hybrid Active Noise Cancellation (ANC), 40-hour battery life, and ultra-plush memory foam cushions.",
-    features: [
-      "Hybrid ANC up to -42dB",
-      "40-hour battery runtime with ultra-fast charging",
-      "Custom 40mm Titanium Drivers",
-      "Bluetooth 5.3 + Multipoint Connectivity"
-    ],
-    stock: 35,
-    isNew: true,
-    isFeatured: true
-  },
-  {
     id: "p2",
     name: "Horizon Smartwatch Ultra",
     slug: "nexora-horizon-smartwatch-ultra",
@@ -485,7 +453,7 @@ export const AppProvider = ({ children }) => {
     } catch {}
     return 'home';
   });
-  const [selectedProductId, setSelectedProductId] = useState('p1');
+  const [selectedProductId, setSelectedProductId] = useState('p2');
 
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState('');
@@ -505,9 +473,10 @@ export const AppProvider = ({ children }) => {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          const existingIds = new Set(parsed.map(p => p.id));
+          const filteredParsed = parsed.filter(p => p.id !== 'p1' && p.slug !== 'nexora-soundpulse-wireless-pro' && p.name !== 'SoundPulse Wireless Pro');
+          const existingIds = new Set(filteredParsed.map(p => p.id));
           const missing = initialProducts.filter(init => !existingIds.has(init.id));
-          const combined = missing.length > 0 ? [...parsed, ...missing] : parsed;
+          const combined = missing.length > 0 ? [...filteredParsed, ...missing] : filteredParsed;
           return combined.map(p => {
             if (p.name) p.name = p.name.replace(/^(NEXORA|SWITCHES)\s+/i, '');
             if (p.category === 'Switches') p.category = 'Keyboards & Gear';
@@ -537,11 +506,17 @@ export const AppProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
     try {
       const saved = localStorage.getItem('nexora_cart');
-      return saved ? JSON.parse(saved) : [
+      if (saved) {
+        const parsedCart = JSON.parse(saved);
+        if (Array.isArray(parsedCart)) {
+          return parsedCart.filter(item => item.productId !== 'p1');
+        }
+      }
+      return [
         {
-          productId: 'p1',
-          selectedColor: 'Crimson Red',
-          selectedSize: 'Standard',
+          productId: 'p2',
+          selectedColor: 'Titanium Gray',
+          selectedSize: '42mm',
           quantity: 1
         }
       ];
@@ -717,15 +692,15 @@ export const AppProvider = ({ children }) => {
           createdAt: new Date().toISOString(),
           items: [
             {
-              productId: 'p1',
-              name: "SoundPulse Wireless Pro",
-              price: 199.99,
+              productId: 'p2',
+              name: "Horizon Smartwatch Ultra",
+              price: 299.99,
               quantity: 1,
-              selectedColor: 'Crimson Red',
-              selectedSize: 'Standard'
+              selectedColor: 'Titanium Gray',
+              selectedSize: '42mm'
             }
           ],
-          totalAmount: 199.99,
+          totalAmount: 299.99,
           discount: 0,
           shippingAddress: {
             fullName: 'Alex Mercer',
@@ -846,9 +821,10 @@ export const AppProvider = ({ children }) => {
   const fetchProductsAndSync = () => {
     api.getProducts().then(res => {
       if (res && res.data && Array.isArray(res.data)) {
-        const existingIds = new Set(res.data.map(p => p.id));
+        const filteredData = res.data.filter(p => p.id !== 'p1' && p.slug !== 'nexora-soundpulse-wireless-pro' && p.name !== 'SoundPulse Wireless Pro');
+        const existingIds = new Set(filteredData.map(p => p.id));
         const missing = initialProducts.filter(init => !existingIds.has(init.id));
-        const combined = missing.length > 0 ? [...res.data, ...missing] : res.data;
+        const combined = missing.length > 0 ? [...filteredData, ...missing] : filteredData;
         const mapped = combined.map(p => {
           if (p.name) p.name = p.name.replace(/^(NEXORA|SWITCHES)\s+/i, '');
           if (!p.subCategory) {
