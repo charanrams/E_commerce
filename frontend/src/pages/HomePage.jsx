@@ -1,20 +1,20 @@
 import React, { useState, useRef } from 'react';
 import { useApp } from '../context/AppContext';
-import { 
-  ArrowRight, 
-  Star, 
-  Heart, 
-  Sparkles, 
-  Cpu, 
-  Shirt, 
-  Home as HomeIcon, 
-  Briefcase, 
-  Zap, 
-  ShieldCheck, 
-  Truck, 
-  MessageSquare, 
-  CheckCircle2, 
-  ChevronDown, 
+import {
+  ArrowRight,
+  Star,
+  Heart,
+  Sparkles,
+  Cpu,
+  Shirt,
+  Home as HomeIcon,
+  Briefcase,
+  Zap,
+  ShieldCheck,
+  Truck,
+  MessageSquare,
+  CheckCircle2,
+  ChevronDown,
   ChevronUp,
   ChevronLeft,
   ChevronRight
@@ -64,7 +64,7 @@ export const HomePage = () => {
   const featured = React.useMemo(() => {
     const filteredList = products.filter(p => {
       const matchesCategory = selectedCategory === 'All' || (p.category || '').trim().toLowerCase() === selectedCategory.trim().toLowerCase();
-      const matchesSubCategory = !selectedSubCategory || selectedSubCategory === 'All' || 
+      const matchesSubCategory = !selectedSubCategory || selectedSubCategory === 'All' ||
         (p.subCategory || '').trim().toLowerCase() === selectedSubCategory.trim().toLowerCase() ||
         (p.name || '').toLowerCase().includes(selectedSubCategory.toLowerCase()) ||
         (p.description || '').toLowerCase().includes(selectedSubCategory.toLowerCase());
@@ -88,9 +88,9 @@ export const HomePage = () => {
       const found = (categoriesList || []).find(c => c.name.toLowerCase() === name.toLowerCase());
       const lower = name.toLowerCase();
       const icon = found?.icon === 'Shirt' ? Shirt :
-                   found?.icon === 'HomeIcon' ? HomeIcon :
-                   found?.icon === 'Briefcase' ? Briefcase :
-                   (baseIconMap[lower] || Cpu);
+        found?.icon === 'HomeIcon' ? HomeIcon :
+          found?.icon === 'Briefcase' ? Briefcase :
+            (baseIconMap[lower] || Cpu);
       const color = found?.color || (lower === 'tech' ? '#00CEC9' : lower === 'apparel' ? '#6C5CE7' : lower === 'home' ? '#FDCB6E' : '#E84393');
       list.push({ name, icon, color });
     });
@@ -100,7 +100,7 @@ export const HomePage = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Marcus Vance",
+      name: "Marcus Vane",
       role: "Verified Buyer",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
@@ -147,7 +147,7 @@ export const HomePage = () => {
 
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', paddingTop: '0.75rem', width: '100%', overflowX: 'hidden' }}>
-      
+
       {/* 1. Hero Banner Showcase with 3D E-Commerce Image */}
       <section className="card" style={{
         background: 'linear-gradient(135deg, rgba(186, 12, 47, 0.12), rgba(153, 0, 0, 0.05))',
@@ -167,7 +167,7 @@ export const HomePage = () => {
             <img src="/logo.png" alt="NEXORA" style={{ height: '1rem', width: 'auto' }} />
             <span>NEXORA OFFICIAL — SINCE 2026</span>
           </div>
-          
+
           <h1 style={{
             fontSize: 'clamp(1.6rem, 5vw, 3.2rem)',
             fontWeight: 900,
@@ -177,14 +177,14 @@ export const HomePage = () => {
           }}>
             Engineered for <span style={{ background: 'var(--grad-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Speed & Precision</span>.
           </h1>
-          
+
           <p style={{ fontSize: 'clamp(0.85rem, 2.5vw, 1rem)', color: 'var(--text-muted)', marginBottom: '1.5rem', lineHeight: 1.5 }}>
             Experience the new standard in retail. Instant sub-second browsing, high-converting checkout, and 60 FPS fluid animations.
           </p>
 
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-            <button 
-              onClick={() => setCurrentPage('catalog')} 
+            <button
+              onClick={() => setCurrentPage('catalog')}
               className="btn btn-primary"
               style={{ padding: '0.75rem 1.75rem', fontSize: '0.95rem', fontWeight: 800, whiteSpace: 'nowrap', minHeight: '44px', borderRadius: '9999px' }}
             >
@@ -229,19 +229,19 @@ export const HomePage = () => {
       </section>
 
       {/* 2. Promotional Offer Banner Card */}
-      <section 
-        className="card animate-fade-in" 
-        style={{ 
-          background: 'linear-gradient(135deg, #121319 0%, #2a0812 50%, #ba0c2f 100%)', 
-          color: '#ffffff', 
-          padding: '1.1rem 1.35rem', 
-          borderRadius: 'var(--radius-lg)', 
-          boxShadow: '0 12px 32px rgba(186, 12, 47, 0.28)', 
+      <section
+        className="card animate-fade-in"
+        style={{
+          background: 'linear-gradient(135deg, #121319 0%, #2a0812 50%, #ba0c2f 100%)',
+          color: '#ffffff',
+          padding: '1.1rem 1.35rem',
+          borderRadius: 'var(--radius-lg)',
+          boxShadow: '0 12px 32px rgba(186, 12, 47, 0.28)',
           border: '1px solid rgba(186, 12, 47, 0.4)',
-          display: 'flex', 
-          alignItems: 'center', 
-          justify: 'space-between', 
-          flexWrap: 'wrap', 
+          display: 'flex',
+          alignItems: 'center',
+          justify: 'space-between',
+          flexWrap: 'wrap',
           gap: '1rem',
           position: 'relative',
           overflow: 'hidden'
@@ -438,10 +438,10 @@ export const HomePage = () => {
         overflow: 'hidden'
       }}>
         <div style={{ width: '170px', height: '130px', flexShrink: 0, borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '2px solid rgba(255,255,255,0.3)', boxShadow: '0 6px 16px rgba(0,0,0,0.2)' }}>
-          <img 
-            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" 
-            alt="Best Seller Headphones" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+          <img
+            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+            alt="Best Seller Headphones"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
 
@@ -464,7 +464,7 @@ export const HomePage = () => {
           <p style={{ fontSize: '0.82rem', opacity: 0.9, lineHeight: 1.5, marginBottom: '1rem', maxWidth: '500px' }}>
             Upgrade your daily workflow with studio audio headphones, titanium smartwatches, and hot-swappable keyboards.
           </p>
-          <button 
+          <button
             onClick={() => setCurrentPage('catalog')}
             className="btn"
             style={{
@@ -494,7 +494,7 @@ export const HomePage = () => {
             </p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <button 
+            <button
               onClick={() => setCurrentPage('catalog')}
               className="btn btn-secondary"
               style={{ padding: '0.35rem 0.85rem', fontSize: '0.8rem' }}
@@ -589,10 +589,10 @@ export const HomePage = () => {
         overflow: 'hidden'
       }}>
         <div style={{ width: '170px', height: '130px', flexShrink: 0, borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '2px solid rgba(255,255,255,0.15)', boxShadow: '0 6px 16px rgba(0,0,0,0.3)' }}>
-          <img 
-            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" 
-            alt="New Smartwatch Drop" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+          <img
+            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+            alt="New Smartwatch Drop"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
 
@@ -617,7 +617,7 @@ export const HomePage = () => {
           <p style={{ fontSize: '0.82rem', color: '#94a3b8', lineHeight: 1.5, marginBottom: '1rem', maxWidth: '500px' }}>
             Be among the first to experience our latest sub-second ANC audio, titanium display watches, and ambient lightbars.
           </p>
-          <button 
+          <button
             onClick={() => setCurrentPage('catalog')}
             className="btn btn-primary"
             style={{
@@ -643,7 +643,7 @@ export const HomePage = () => {
               Explore the latest 2026 hardware drops and fresh tech releases
             </p>
           </div>
-          <button 
+          <button
             onClick={() => setCurrentPage('catalog')}
             className="btn btn-secondary"
             style={{ padding: '0.35rem 0.85rem', fontSize: '0.8rem' }}
